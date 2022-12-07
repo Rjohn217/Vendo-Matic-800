@@ -6,15 +6,11 @@ import java.util.Map;
 
 public class VendingMachine {
 
-    int balance;
+    Money balance;
     Map<Item, Integer> inventory = new HashMap<>();
 
     private void feedMoney(int money) {
-        if(money > 0) {
-            balance += money;
-        } else {
-            System.out.println("Please add cash");
-        }
+
     }
 
     private void purchaseItem(Item item) {

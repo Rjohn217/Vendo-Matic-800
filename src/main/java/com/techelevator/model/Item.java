@@ -2,6 +2,6 @@ package com.techelevator.model;
 
 public interface Item {
     String getName();
-    int getCost();
+    Money getCost();
     String dispenseMessage();
 }

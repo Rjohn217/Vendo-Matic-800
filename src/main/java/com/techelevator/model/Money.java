@@ -1,5 +1,8 @@
 package com.techelevator.model;
 
+import java.text.NumberFormat;
+import java.util.Currency;
+
 public class Money {
 
     private int amount;
@@ -16,12 +19,13 @@ public class Money {
         amount += m.amount;
     }
 
-    private void subtract(Money m) {
-    }
+    private void subtract(Money m) { amount = amount - m.amount; }
 
     @Override
     public String toString() {
-        //199 -> "$1.99"
-        return null;
+//        Currency cu = Currency.getInstance(String.valueOf(amount));
+//        return cu.toString();
+        NumberFormat format = NumberFormat.getCurrencyInstance();
+        return format.toString();
     }
 }

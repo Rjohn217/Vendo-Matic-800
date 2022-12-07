@@ -13,8 +13,8 @@ public class VendingMachine {
 
     }
 
-    private void purchaseItem(Item item) {
-        //throws InvalidTransactionException
+    private void purchaseItem(Item item) throws InvalidTransactionException {
+
     }
 
     private List<String> getItems(){
@@ -22,8 +22,8 @@ public class VendingMachine {
         return null;
     }
 
-    private void finishTransaction() {
-        //throws InvalidTransactionException
+    private void finishTransaction() throws InvalidTransactionException{
+
     }
 
 

@@ -4,4 +4,5 @@ public interface Item {
     String getName();
     Money getCost();
     String dispenseMessage();
+    String getSlot();
 }

@@ -5,9 +5,12 @@ public class Chip implements Item {
     private String name;
     private Money cost;
 
-    public Chip(String name, Money cost) {
+    private String slot;
+
+    public Chip(String name, Money cost, String slot) {
         this.name = name;
         this.cost = cost;
+        this.slot = slot;
     }
 
     @Override
@@ -19,5 +22,10 @@ public class Chip implements Item {
     @Override
     public String dispenseMessage() {
         return "Crunch Crunch, Yum!";
+    }
+
+    @Override
+    public String getSlot() {
+        return slot;
     }
 }

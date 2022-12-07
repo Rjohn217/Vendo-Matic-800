@@ -3,8 +3,7 @@ package com.techelevator.controller;
 
 import com.techelevator.VendingMachineCLI;
 
-import static com.techelevator.VendingMachineCLI.MAIN_MENU_OPTION_DISPLAY_ITEMS;
-import static com.techelevator.VendingMachineCLI.MAIN_MENU_OPTION_PURCHASE;
+import static com.techelevator.VendingMachineCLI.*;
 
 
 public class VendingMachineController {
@@ -22,6 +21,8 @@ public class VendingMachineController {
                 // display vending machine items
             } else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
                 // do purchase
+            } else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
+                break;
             }
         }
     }

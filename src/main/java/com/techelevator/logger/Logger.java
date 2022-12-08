@@ -9,9 +9,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Logger {
-    private static PrintWriter log;
+    private PrintWriter log;
 
-    public static void logMessage(Transaction transaction, Clock clock) throws LogFileNotDefinedException {
+    public Logger(PrintWriter log) {
+        this.log = log;
+    }
+
+    public void logMessage(Transaction transaction, Clock clock) throws LogFileNotDefinedException {
         if (log == null) {
             throw new LogFileNotDefinedException("Log file is not initialized");
         }
@@ -23,7 +27,7 @@ public class Logger {
                 + transaction.getFinalBalance());
     }
 
-    public static void setLog(PrintWriter logFile) {
+    public void setLog(PrintWriter logFile) {
         log = logFile;
     }
 }

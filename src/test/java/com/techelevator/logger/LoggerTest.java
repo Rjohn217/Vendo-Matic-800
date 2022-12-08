@@ -17,8 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LoggerTest {
     @Test
     void logMessageThrowsException() {
-        Logger.setLog(null);
-        assertThrowsExactly(LogFileNotDefinedException.class, () -> Logger.logMessage(null, Clock.systemUTC()));
+        assertThrowsExactly(LogFileNotDefinedException.class, () -> new Logger(null).logMessage(null, Clock.systemUTC()));
     }
 
     @Test
@@ -26,33 +25,33 @@ class LoggerTest {
         Instant start = Instant.parse("2019-01-01T12:00:00.00Z");
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
-        Logger.setLog(pw);
+        Logger log = new Logger(pw);
         try {
-            Logger.logMessage(
+            log.logMessage(
                     new Transaction("FEED MONEY:",
                             new Money(500),
                             new Money(500),
                             null),
                     Clock.fixed(start, ZoneId.of("UTC")));
-            Logger.logMessage(
+            log.logMessage(
                     new Transaction("FEED MONEY:",
                             new Money(500),
                             new Money(1000),
                             null),
                     Clock.fixed(start.plusSeconds(15), ZoneId.of("UTC")));
-            Logger.logMessage(
+            log.logMessage(
                     new Transaction("Crunchie B4",
                             new Money(175),
                             new Money(825),
                             null),
                     Clock.fixed(start.plusSeconds(20), ZoneId.of("UTC")));
-            Logger.logMessage(
+            log.logMessage(
                     new Transaction("Cowtales B2",
                             new Money(150),
                             new Money(675),
                             null),
                     Clock.fixed(start.plusSeconds(85), ZoneId.of("UTC")));
-            Logger.logMessage(
+            log.logMessage(
                     new Transaction("GIVE CHANGE:",
                             new Money(675),
                             new Money(0),

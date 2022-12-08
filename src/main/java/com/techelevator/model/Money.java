@@ -26,6 +26,6 @@ public class Money {
 //        Currency cu = Currency.getInstance(String.valueOf(amount));
 //        return cu.toString();
         NumberFormat format = NumberFormat.getCurrencyInstance();
-        return format.toString();
+        return format.format(amount / 100.);
     }
 }

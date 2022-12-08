@@ -26,8 +26,4 @@ public class Logger {
                 + transaction.getAmount() + " "
                 + transaction.getFinalBalance());
     }
-
-    public void setLog(PrintWriter logFile) {
-        log = logFile;
-    }
 }

@@ -15,12 +15,24 @@ public class Logger {
         this.log = log;
     }
 
+    public void logMessage(Transaction transaction) throws LogFileNotDefinedException {
+        logMessage(transaction, null);
+    }
+
     public void logMessage(Transaction transaction, Clock clock) throws LogFileNotDefinedException {
         if (log == null) {
             throw new LogFileNotDefinedException("Log file is not initialized");
         }
+        if (clock == null) {
+            clock = Clock.systemDefaultZone();
+        }
         LocalDateTime currentTime = LocalDateTime.now(clock);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss a");
+        if (transaction == null || transaction.getCommand() == null
+                || transaction.getAmount() == null || transaction.getFinalBalance() == null) {
+            log.println(currentTime.format(formatter) + " Invalid Transaction Data");
+            return;
+        }
         log.println(currentTime.format(formatter) + " "
                 + transaction.getCommand() + " "
                 + transaction.getAmount() + " "

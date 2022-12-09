@@ -10,7 +10,9 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.Clock;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +20,46 @@ class LoggerTest {
     @Test
     void logMessageThrowsException() {
         assertThrowsExactly(LogFileNotDefinedException.class, () -> new Logger(null).logMessage(null, Clock.systemUTC()));
+    }
+
+    @Test
+    void defaultClockWorks() throws LogFileNotDefinedException {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        Logger log = new Logger(pw);
+        Clock clock = Clock.systemDefaultZone();
+        log.logMessage(null);
+        LocalDateTime currentTime = LocalDateTime.now(clock);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss a");
+        assertEquals(currentTime.format(formatter) + " Invalid Transaction Data" + System.lineSeparator(), sw.toString());
+    }
+
+    @Test
+    void nullValuesHandled() throws LogFileNotDefinedException {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        Logger log = new Logger(pw);
+        Instant start = Instant.parse("2019-01-01T12:00:00.00Z");
+        Clock clock = Clock.fixed(start, ZoneId.of("UTC"));
+        log.logMessage(null, clock);
+        log.logMessage(
+                new Transaction(null, new Money(0), new Money(0), null),
+                clock
+        );
+        log.logMessage(
+                new Transaction("", null, new Money(0), null),
+                clock
+        );
+        log.logMessage(
+                new Transaction("", new Money(0), null, null),
+                clock
+        );
+        String lines = "01/01/2019 12:00:00 PM Invalid Transaction Data" + System.lineSeparator() +
+                "01/01/2019 12:00:00 PM Invalid Transaction Data" + System.lineSeparator() +
+                "01/01/2019 12:00:00 PM Invalid Transaction Data" + System.lineSeparator() +
+                "01/01/2019 12:00:00 PM Invalid Transaction Data" + System.lineSeparator();
+        assertEquals(lines, sw.toString());
+
     }
 
     @Test

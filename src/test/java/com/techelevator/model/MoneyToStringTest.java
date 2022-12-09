@@ -14,7 +14,7 @@ public class MoneyToStringTest extends TestCase {
         String expected = "$3.99";
 
         NumberFormat format = NumberFormat.getCurrencyInstance();
-        String result = format.format(amount).toString();
+        String result = format.format(amount/100.).toString();
 
         Assert.assertEquals(expected,result);
     }

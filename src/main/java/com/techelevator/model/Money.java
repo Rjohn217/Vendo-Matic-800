@@ -5,7 +5,11 @@ import java.util.Currency;
 
 public class Money {
 
-    protected int amount;
+    private int amount;
+
+    public int getAmount() {
+        return amount;
+    }
 
     public Money() {
         this.amount = 0;
@@ -18,7 +22,7 @@ public class Money {
     protected void add(Money m) { amount += m.amount; }
 
     protected void subtract (Money m) { amount = amount - m.amount; }
-    
+
     @Override
     public String toString() {
         NumberFormat format = NumberFormat.getCurrencyInstance();

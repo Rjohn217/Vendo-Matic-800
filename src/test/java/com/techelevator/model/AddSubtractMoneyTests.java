@@ -11,7 +11,7 @@ public class AddSubtractMoneyTests extends TestCase {
 
         m1.add(m2);
 
-        Assert.assertEquals(15, m1.amount);
+        Assert.assertEquals(15, m1.getAmount());
     }
 
     public void testSubtract() {
@@ -21,7 +21,7 @@ public class AddSubtractMoneyTests extends TestCase {
 
         m1.subtract(m2);
 
-        Assert.assertEquals(8,m1.amount);
+        Assert.assertEquals(8,m1.getAmount());
 
     }
 }

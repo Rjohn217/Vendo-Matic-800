@@ -19,9 +19,9 @@ public class Money {
         this.amount = amount;
     }
 
-    protected void add(Money m) { amount += m.amount; }
+    public void add(Money m) { amount += m.amount; }
 
-    protected void subtract (Money m) { amount = amount - m.amount; }
+    public void subtract (Money m) { amount = amount - m.amount; }
 
     @Override
     public String toString() {

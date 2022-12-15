@@ -16,7 +16,7 @@ public class InventoryReader{
     String name="";
     String type="";
     String location="";
-    double cost=0;
+   // int money=0;
 
 
     try{ File inventryReaderFile=new File("vendingmachine.csv");
@@ -26,30 +26,20 @@ public class InventoryReader{
          name=token.nextToken();
          type=token.nextToken();
          location=token.nextToken();
-         cost=Double.parseDouble(token.nextToken());
-         Item newItem=new Item() {
-           @Override
-           public String getName() {
-             return this.getName();
-           }
+         //money=Integer.parseInt(token.nextToken());
+         Money money=new Money();
+         //money=(Money)token.nextToken();
+         Gum newGum=new Gum(name,money,location);
+         Candy newCandy= new Candy(name,money,location);
+         Chip newChip=new Chip(name,money,location);
+         Beverage newBeverages=new Beverage(name,money,location);
 
-           @Override
-           public Money getCost() {
-             return this.getCost();
-           }
 
-           @Override
-           public String dispenseMessage() {
-             return this.dispenseMessage();
-           }
 
-           @Override
-           public String getSlot() {
-             return this.getSlot();
-           }
-
-         };
-     inventoryReader.add(newItem);
+     inventoryReader.add(newGum);
+     inventoryReader.add(newCandy);
+     inventoryReader.add(newChip);
+     inventoryReader.add(newBeverages);
 
       }
     }

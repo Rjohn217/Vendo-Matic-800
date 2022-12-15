@@ -1,36 +1,32 @@
 package com.techelevator.model;
-import java.util.HashMap;
-import java.util.Map;
 
-public class InventoryReader<T> {
-    private Map<T, Integer> inventory = new HashMap<T, Integer>();
 
-    public int getQuantity(T item){
-        Integer value = inventory.get(item);
-        return value == null? 0 : value ;
-    }
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-    public void add(T item){
-        int count = inventory.get(item);
-        inventory.put(item, count+1);
-    }
+public class InventoryReader{
+  public static List<String> processFile()  {
+    List<String> inventoryReader=new ArrayList<String>();
 
-    public void deduct(T item) {
-        if (hasItem(item)) {
-            int count = inventory.get(item);
-            inventory.put(item, count - 1);
+    try{ File inventryReaderFile=new File("vendingmachine.csv");
+      Scanner sc=new Scanner(inventryReaderFile);
+      while (sc.hasNext()){
+        for (int i=0;i<=inventoryReader.size();i++){
+          System.out.println(inventoryReader.get(i).split("|"));
         }
+
+      }
+    }
+    catch (IOException e){
+      System.out.println(e);
+      e.printStackTrace();
+
     }
 
-    public boolean hasItem(T item){
-        return getQuantity(item) > 0;
-    }
-
-    public void clear(){
-        inventory.clear();
-    }
-
-    public void put(T item, int quantity) {
-        inventory.put(item, quantity);
-    }
+    return inventoryReader;
+  }
 }

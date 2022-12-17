@@ -14,6 +14,7 @@ public class VendingMachine {
         for(Item i : items){
             inventory.put(i, 5);
         }
+        balance = new Money();
     }
 
     public Transaction feedMoney(Money amountTOAdd) {
@@ -42,7 +43,7 @@ public class VendingMachine {
         return inventory;
     }
 
-    public Transaction finishTransaction() throws InvalidTransactionException{
+    public Transaction finishTransaction(){
         // String command, Money amount, Money finalBalance, String dispenseMessage
        Money lastBalance = new Money();// the default constructor will set the balance value to zero
         Transaction lastTransaction = new Transaction("GIVE CHANGE:",balance,lastBalance,"");

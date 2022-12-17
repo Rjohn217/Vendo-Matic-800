@@ -23,31 +23,33 @@ public class InventoryReader{
       Scanner sc=new Scanner(inventryReaderFile);
       while (sc.hasNext()){
          token=new StringTokenizer(sc.nextLine(),"|");
-         name=token.nextToken();
-         type=token.nextToken();
          location=token.nextToken();
-         //money=Integer.parseInt(token.nextToken());
+         name=token.nextToken();
          Money money=new Money();
+         type=token.nextToken();
+         //money=Integer.parseInt(token.nextToken());
          //money=(Money)token.nextToken();
-         Gum newGum=new Gum(name,money,location);
-         Candy newCandy= new Candy(name,money,location);
-         Chip newChip=new Chip(name,money,location);
-         Beverage newBeverages=new Beverage(name,money,location);
+          if(type.equals("Gum")){
+              Gum newGum=new Gum(name,money,location);
+              inventoryReader.add(newGum);
+          }else if(type.equals("Candy"))
+          { Candy newCandy= new Candy(name,money,location);
+              inventoryReader.add(newCandy);
+          }
+          else if (type.equals("Chip")) {
+              Chip newChip=new Chip(name,money,location);
+              inventoryReader.add(newChip);
+          }else if(type.equals("Drink")){
+              Beverage newBeverages=new Beverage(name,money,location);
+              inventoryReader.add(newBeverages);
+          }
 
-
-
-     inventoryReader.add(newGum);
-     inventoryReader.add(newCandy);
-     inventoryReader.add(newChip);
-     inventoryReader.add(newBeverages);
 
       }
     }
     catch (IOException e){
-      System.out.println(e);
-      e.printStackTrace();
-
-    }
+      System.out.println("The inventory can not been read in");
+     }
 
     return inventoryReader;
   }

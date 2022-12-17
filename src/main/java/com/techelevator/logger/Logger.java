@@ -15,13 +15,13 @@ public class Logger {
         this.log = log;
     }
 
-    public void logMessage(Transaction transaction) throws LogFileNotDefinedException {
+    public void logMessage(Transaction transaction) {
         logMessage(transaction, null);
     }
 
-    public void logMessage(Transaction transaction, Clock clock) throws LogFileNotDefinedException {
+    public void logMessage(Transaction transaction, Clock clock) {
         if (log == null) {
-            throw new LogFileNotDefinedException("Log file is not initialized");
+            throw new RuntimeException("Log file is not initialized");
         }
         if (clock == null) {
             clock = Clock.systemDefaultZone();

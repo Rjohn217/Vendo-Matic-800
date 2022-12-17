@@ -1,8 +1,11 @@
 package com.techelevator.view;
 
+import com.techelevator.model.Item;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -49,5 +52,33 @@ public class Menu {
 		}
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
+	}
+
+	public int getFeedAmount() {
+		System.out.print("Choose an amount to deposit (whole dollar amount): ");
+		while(true) {
+			try {
+				return Integer.parseInt(in.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("Please input a valid amount");
+			}
+		}
+	}
+
+	public String getPurchaseItem(List<String> items) {
+		System.out.println("Choose an item: ");
+		for (int i = 1; i <= items.size(); i++) {
+			System.out.println(i + ") " + items.get(i));
+		}
+		while(true) {
+			try {
+				int choice = Integer.parseInt(in.nextLine());
+				if (choice > 0 && choice <= items.size()) {
+					return items.get(choice);
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Please input a valid choice");
+			}
+		}
 	}
 }

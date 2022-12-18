@@ -46,6 +46,15 @@ public class MainFrame extends JFrame {
                 dispose();
             }
         });
+        addFundsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                AddFundsUI addFundsUI = new AddFundsUI(vendingMachineEventListener);
+                addFundsUI.setContentPane(addFundsUI.getPanel1());
+                addFundsUI.setVisible(true);
+                dispose();
+            }
+        });
     }
 
     public JPanel getMainPanel() {

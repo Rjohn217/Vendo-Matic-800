@@ -7,14 +7,18 @@ import java.awt.event.ActionListener;
 public class ChipCandyDrinkGum extends JFrame {
 
 
-    public JPanel typePanel;
-    public JLabel whatWouldYouLike;
-    JButton candyButton;
-    JButton chipsButton;
-    JButton gumButton;
-    JButton beverageButton;
-    public JPanel titlePanel;
-    public JPanel buttonPanel;
+    public JPanel getTypePanel() {
+        return typePanel;
+    }
+
+    private JPanel typePanel;
+    private JLabel whatWouldYouLike;
+    private JButton candyButton;
+    private JButton chipsButton;
+    private JButton gumButton;
+    private JButton beverageButton;
+    private JPanel titlePanel;
+    private JPanel buttonPanel;
 
 
     ChipCandyDrinkGum() {

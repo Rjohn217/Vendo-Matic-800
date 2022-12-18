@@ -62,15 +62,17 @@
               <verticalAlignment value="0"/>
             </properties>
           </component>
-          <component id="9c7c4" class="javax.swing.JButton" binding="viewInventoryButton">
+          <component id="c960" class="javax.swing.JButton" binding="listItemsButton">
             <constraints/>
             <properties>
+              <actionCommand value="List Items"/>
               <background color="-11447983"/>
               <font size="14"/>
               <foreground color="-1"/>
               <horizontalTextPosition value="0"/>
               <preferredSize width="175" height="50"/>
-              <text value="View Inventory"/>
+              <text value="Purchase Items"/>
+              <verticalAlignment value="0"/>
             </properties>
           </component>
           <component id="8db9f" class="javax.swing.JButton" binding="accountBalanceButton" default-binding="true">

@@ -9,6 +9,10 @@ public class VendingMachine {
    private Money balance;
     private Map<Item, Integer> inventory;
 
+    public Money getBalance() {
+        return balance;
+    }
+
     public VendingMachine(List<Item> items){
         inventory = new HashMap<>();
         for(Item i : items){

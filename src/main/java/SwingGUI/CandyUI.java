@@ -5,7 +5,7 @@ import javax.swing.*;
 public class CandyUI extends JFrame {
 
     //This red squiggle is meaningless, code runs fine
-    public JPanel candyPanel;
+    private JPanel candyPanel;
     private JLabel candyLabel;
 
     private JPanel candyButtonPanel;

@@ -32,7 +32,7 @@ public class InventoryReader{
           if(type.equals("Gum")){
               Gum newGum=new Gum(name,money,location);
               inventoryReader.add(newGum);
-          }else if(type.equals("Candy"))
+          }else if(type.equals("CandyUI"))
           { Candy newCandy= new Candy(name,money,location);
               inventoryReader.add(newCandy);
           }

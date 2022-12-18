@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="SwingGUI.ChipsUI">
+  <grid id="27dc6" binding="chipsPanel" layout-manager="FlowLayout" hgap="200" vgap="70" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="700" height="600"/>
+    </constraints>
+    <properties>
+      <background color="-9257985"/>
+      <maximumSize width="700" height="600"/>
+      <minimumSize width="700" height="600"/>
+      <preferredSize width="700" height="600"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="7f4ab" class="javax.swing.JLabel" binding="chipsLabel">
+        <constraints/>
+        <properties>
+          <background color="-9257985"/>
+          <font name="Marlett" size="38" style="3"/>
+          <foreground color="-16777216"/>
+          <text value="What Chips Would You Like?"/>
+        </properties>
+      </component>
+      <grid id="1479a" binding="chipsButtonPanel" layout-manager="FlowLayout" hgap="40" vgap="30" flow-align="1">
+        <constraints/>
+        <properties>
+          <background color="-9257985"/>
+          <maximumSize width="700" height="600"/>
+          <preferredSize width="200" height="350"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="cacd0" class="javax.swing.JButton" binding="firstChipsButton">
+            <constraints/>
+            <properties>
+              <background color="-11447983"/>
+              <font size="14"/>
+              <foreground color="-1"/>
+              <horizontalTextPosition value="0"/>
+              <maximumSize width="127" height="30"/>
+              <preferredSize width="175" height="50"/>
+              <text value="Candy"/>
+            </properties>
+          </component>
+          <component id="981c2" class="javax.swing.JButton" binding="secondChipsButton">
+            <constraints/>
+            <properties>
+              <background color="-11447983"/>
+              <font size="14"/>
+              <foreground color="-1"/>
+              <preferredSize width="175" height="50"/>
+              <text value="Chips"/>
+            </properties>
+          </component>
+          <component id="6c51a" class="javax.swing.JButton" binding="thirdChipsButton">
+            <constraints/>
+            <properties>
+              <background color="-11447983"/>
+              <font size="14"/>
+              <foreground color="-1"/>
+              <horizontalTextPosition value="0"/>
+              <preferredSize width="175" height="50"/>
+              <text value="Beverage"/>
+            </properties>
+          </component>
+          <component id="37722" class="javax.swing.JButton" binding="fourthChipsButton">
+            <constraints/>
+            <properties>
+              <background color="-11447983"/>
+              <font size="14"/>
+              <foreground color="-1"/>
+              <preferredSize width="175" height="50"/>
+              <text value="Gum"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

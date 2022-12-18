@@ -1,8 +1,15 @@
 package SwingGUI;
 
+import com.techelevator.controller.VendingMachineController;
+import com.techelevator.controller.VendingMachineEventListener;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 
 public class ChipCandyDrinkGum extends JFrame {
 
@@ -21,7 +28,7 @@ public class ChipCandyDrinkGum extends JFrame {
     private JPanel buttonPanel;
 
 
-    ChipCandyDrinkGum() {
+    ChipCandyDrinkGum(VendingMachineEventListener vendingMachineEventListener) {
 
 
         setContentPane(typePanel);
@@ -38,7 +45,7 @@ public class ChipCandyDrinkGum extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e != null && e.getActionCommand().equals("Candy")) {
-                    CandyUI candy = new CandyUI();
+                    CandyUI candy = new CandyUI(vendingMachineEventListener);
                     setVisible(true);
 
 
@@ -52,7 +59,7 @@ public class ChipCandyDrinkGum extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e != null && e.getActionCommand().equals("Chips")) {
-                    ChipsUI chips = new ChipsUI();
+                    ChipsUI chips = new ChipsUI(vendingMachineEventListener);
                     setVisible(true);
 
 
@@ -66,7 +73,7 @@ public class ChipCandyDrinkGum extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e != null && e.getActionCommand().equals("Beverage")) {
-                    BeverageUI beverage = new BeverageUI();
+                    BeverageUI beverage = new BeverageUI(vendingMachineEventListener);
                     setVisible(true);
 
 
@@ -80,7 +87,7 @@ public class ChipCandyDrinkGum extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e != null && e.getActionCommand().equals("Gum")) {
-                    GumUI gum = new GumUI();
+                    GumUI gum = new GumUI(vendingMachineEventListener);
                     setVisible(true);
 
 
@@ -89,6 +96,16 @@ public class ChipCandyDrinkGum extends JFrame {
 
             }
         } );
+
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                e.getWindow().dispose();
+                vendingMachineEventListener.exitProgram();
+            }
+        });
 
     }
 }

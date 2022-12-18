@@ -1,6 +1,12 @@
 package SwingGUI;
 
+import com.techelevator.controller.VendingMachineEventListener;
+
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 
 public class BeverageUI extends JFrame {
     private JPanel beveragePanel;
@@ -11,7 +17,7 @@ public class BeverageUI extends JFrame {
     private JButton thirdBeverageButton;
     private JButton fourthBeverageButton;
 
-    BeverageUI () {
+    BeverageUI (VendingMachineEventListener vendingMachineEventListener) {
 
 
         setContentPane(beveragePanel);
@@ -22,6 +28,14 @@ public class BeverageUI extends JFrame {
         JFrame beverageFrame = new JFrame();
         setVisible(true);
 
-
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                e.getWindow().dispose();
+                vendingMachineEventListener.exitProgram();
+            }
+        });
     }
 }

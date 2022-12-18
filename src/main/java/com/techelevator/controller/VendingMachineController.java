@@ -16,9 +16,9 @@ import static com.techelevator.VendingMachineCLI.*;
 
 
 public class VendingMachineController implements VendingMachineEventListener {
-    private VendingMachine vendingMachine;
+    private final VendingMachine vendingMachine;
     PrintWriter pw;
-    private Logger logger;
+    private final Logger logger;
 
     public VendingMachineController(VendingMachine vendingMachine, PrintWriter pw) {
         this.vendingMachine = vendingMachine;

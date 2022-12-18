@@ -1,6 +1,12 @@
 package SwingGUI;
 
+import com.techelevator.controller.VendingMachineEventListener;
+
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 
 public class GumUI extends JFrame{
     private JPanel gumPanel;
@@ -11,7 +17,7 @@ public class GumUI extends JFrame{
     private JButton thirdGumButton;
     private JButton fourthGumButton;
 
-    GumUI() {
+    GumUI(VendingMachineEventListener vendingMachineEventListener) {
 
 
         setContentPane(gumPanel);
@@ -22,6 +28,14 @@ public class GumUI extends JFrame{
         JFrame gumFrame = new JFrame();
         setVisible(true);
 
-
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                e.getWindow().dispose();
+                vendingMachineEventListener.exitProgram();
+            }
+        });
     }
 }

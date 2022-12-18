@@ -1,6 +1,13 @@
 package SwingGUI;
 
+import com.techelevator.controller.VendingMachineController;
+import com.techelevator.controller.VendingMachineEventListener;
+
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 
 public class ChipsUI extends JFrame {
     private JPanel chipsPanel;
@@ -11,7 +18,7 @@ public class ChipsUI extends JFrame {
     private JButton thirdChipsButton;
     private JButton fourthChipsButton;
 
-    ChipsUI() {
+    ChipsUI(VendingMachineEventListener vendingMachineEventListener) {
 
 
         setContentPane(chipsPanel);
@@ -22,6 +29,14 @@ public class ChipsUI extends JFrame {
         JFrame chipsFrame = new JFrame();
         setVisible(true);
 
-
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                e.getWindow().dispose();
+                vendingMachineEventListener.exitProgram();
+            }
+        });
     }
 }

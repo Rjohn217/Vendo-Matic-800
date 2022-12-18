@@ -1,11 +1,14 @@
 package SwingGUI;
 
 
+import com.techelevator.controller.VendingMachineController;
 import com.techelevator.controller.VendingMachineEventListener;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLOutput;
 
 public class MainFrame extends JFrame {
@@ -30,7 +33,7 @@ public class MainFrame extends JFrame {
         purchaseItemsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ChipCandyDrinkGum frame2 = new ChipCandyDrinkGum();
+                ChipCandyDrinkGum frame2 = new ChipCandyDrinkGum(vendingMachineEventListener);
                 frame2.setContentPane(frame2.getTypePanel());
                 frame2.setVisible(true);
                 dispose();
@@ -62,7 +65,18 @@ public class MainFrame extends JFrame {
                 vendingMachineEventListener.exitProgram();
             }
         });
+
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                e.getWindow().dispose();
+                vendingMachineEventListener.exitProgram();
+            }
+        });
     }
+
 
     public JPanel getMainPanel() {
         return mainPanel;

@@ -17,22 +17,23 @@ import static com.techelevator.VendingMachineCLI.*;
 
 public class VendingMachineController implements VendingMachineEventListener {
     private VendingMachine vendingMachine;
+    PrintWriter pw;
     private Logger logger;
 
-    public VendingMachineController(VendingMachine vendingMachine, Logger logger) {
+    public VendingMachineController(VendingMachine vendingMachine, PrintWriter pw) {
         this.vendingMachine = vendingMachine;
-        this.logger = logger;
+        this.pw = pw;
+        logger = new Logger(pw);
     }
 
+
     public static void main(String[] args) throws IOException {
-        PrintWriter logFile = new PrintWriter(new File("Log.txt"));
-        Logger logger = new Logger(logFile);
+        PrintWriter logFile = new PrintWriter("Log.txt");
         List<Item> inventory = InventoryReader.processFile();
         VendingMachine  vendingMachine = new VendingMachine(inventory);
         VendingMachineController controller =
-                new VendingMachineController(vendingMachine, logger);
+                new VendingMachineController(vendingMachine, logFile);
         MainFrame myFrame = new MainFrame(controller);
-        logFile.close();
     }
 
     @Override
@@ -49,5 +50,11 @@ public class VendingMachineController implements VendingMachineEventListener {
     @Override
     public String getBalance() {
         return vendingMachine.getBalance().toString();
+    }
+
+    @Override
+    public void exitProgram() {
+        pw.close();
+        System.exit(0);
     }
 }

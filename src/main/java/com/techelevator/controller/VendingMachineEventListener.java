@@ -6,4 +6,5 @@ public interface VendingMachineEventListener {
     String doPurchase(Item item);
     void doFeed(int amount);
     String getBalance();
+    void exitProgram();
 }

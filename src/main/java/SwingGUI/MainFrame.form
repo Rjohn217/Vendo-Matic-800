@@ -71,7 +71,7 @@
               <foreground color="-1"/>
               <horizontalTextPosition value="0"/>
               <preferredSize width="175" height="50"/>
-              <text value="Purchase Items"/>
+              <text value="List Items"/>
               <verticalAlignment value="0"/>
             </properties>
           </component>
@@ -98,6 +98,19 @@
           </component>
         </children>
       </grid>
+      <component id="8ff15" class="javax.swing.JButton" binding="exit">
+        <constraints/>
+        <properties>
+          <actionCommand value="Exit"/>
+          <background color="-11447983"/>
+          <font size="14"/>
+          <foreground color="-1"/>
+          <horizontalTextPosition value="0"/>
+          <preferredSize width="175" height="50"/>
+          <text value="Exit"/>
+          <verticalAlignment value="0"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

@@ -16,6 +16,7 @@ public class MainFrame extends JFrame {
     private JButton accountBalanceButton;
     private JButton addFundsButton;
     private JButton listItemsButton;
+    private JButton exit;
 
 
     public MainFrame(VendingMachineEventListener vendingMachineEventListener) {
@@ -53,6 +54,12 @@ public class MainFrame extends JFrame {
                 addFundsUI.setContentPane(addFundsUI.getPanel1());
                 addFundsUI.setVisible(true);
                 dispose();
+            }
+        });
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                vendingMachineEventListener.exitProgram();
             }
         });
     }

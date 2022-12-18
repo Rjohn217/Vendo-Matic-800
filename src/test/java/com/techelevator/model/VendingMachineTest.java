@@ -38,9 +38,45 @@ public class VendingMachineTest extends TestCase {
         Assert.assertEquals(myTransaction.getFinalBalance().getAmount() , 500);
 
         Assert.assertEquals(myTransaction.getDispenseMessage() , "Glug Glug, Yum!");
+    }
 
+    // Edge case: The machine does  not have enough money
+    public void testFeedPurchaseItemNotEnoughMoney()  {
 
+        Item myItem = new Candy("hersey's",new Money(1500),"A2");
+        List <Item> myList = new ArrayList<>();
+        myList.add(myItem);
+        VendingMachine vendingMachine = new VendingMachine(myList);
+        vendingMachine.feedMoney(new Money(1000));
+        boolean caughtException = false;
+        try{
+            vendingMachine.purchaseItem(myItem);
+        }catch (InvalidTransactionException e){
+            caughtException = true;
+        }
+       assertTrue(caughtException);
+    }
 
+    // Edge case: The machine does not have enough item
+    public void testFeedPurchaseItemNotEnoughItem() throws InvalidTransactionException {
+
+        Item myItem = new Candy("hersey's",new Money(1),"A2");
+        List <Item> myList = new ArrayList<>();
+        myList.add(myItem);
+        VendingMachine vendingMachine = new VendingMachine(myList);
+        vendingMachine.feedMoney(new Money(1000));
+        boolean caughtException = false;
+        try{
+            vendingMachine.purchaseItem(myItem);
+            vendingMachine.purchaseItem(myItem);
+            vendingMachine.purchaseItem(myItem);
+            vendingMachine.purchaseItem(myItem);
+            vendingMachine.purchaseItem(myItem);
+            vendingMachine.purchaseItem(myItem);
+        }catch (InvalidTransactionException e){
+            caughtException = true;
+        }
+        assertTrue(caughtException);
     }
 
     public void testgetItems() {

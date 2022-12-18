@@ -26,12 +26,13 @@ public class VendingMachine {
     public Transaction purchaseItem(Item item) throws InvalidTransactionException {
         int clientBalance = balance.getAmount();
         int itemCost = item.getCost().getAmount();
-        int inventoryValue = 0;
+       // int inventoryValue = 0;
         if(clientBalance >= itemCost && inventory.get(item) > 0){
             balance.subtract(item.getCost());
             // reduce the value in the inventory by 1
 
-            inventory.put(item, inventoryValue); // updating the value
+
+            inventory.put(item, inventory.get(item) - 1); // updating the value
             return new Transaction(item.getName() + " " + item.getSlot(), item.getCost(), balance, item.dispenseMessage());
         } else{
             throw new InvalidTransactionException();

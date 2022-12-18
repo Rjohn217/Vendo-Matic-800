@@ -32,9 +32,7 @@ public class VendingMachineController {
 
             if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
                 // display vending machine items
-                for (String itemString : vendingMachine.getItems()) {
-                    System.out.println(itemString);
-                }
+
             } else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
                 // do purchase
                 String purchaseChoice = vendingMachineCLI.getPurchaseChoice();
@@ -43,16 +41,9 @@ public class VendingMachineController {
                     Transaction feed = vendingMachine.feedMoney(money);
                     logger.logMessage(feed);
                 } else if (purchaseChoice.equals(PURCHASE_MENU_OPTION_PURCHASE_ITEM)) {
-                    String purchaseItem = vendingMachineCLI.getPurchaseItem(vendingMachine.getItems());
-                    try {
-                        Transaction purchase = vendingMachine.purchaseItem(new Candy("", new Money(), ""));
-                        logger.logMessage(purchase);
-                    } catch (InvalidTransactionException e) {
-                        throw new RuntimeException();
-                    }
+
                 } else if (purchaseChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
-                    Transaction finish = vendingMachine.finishTransaction();
-                    logger.logMessage(finish);
+
                 }
             } else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
                 break;

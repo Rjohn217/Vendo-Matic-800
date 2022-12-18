@@ -98,16 +98,16 @@
           </component>
         </children>
       </grid>
-      <component id="8ff15" class="javax.swing.JButton" binding="exit">
+      <component id="8ff15" class="javax.swing.JButton" binding="giveChange">
         <constraints/>
         <properties>
-          <actionCommand value="Exit"/>
+          <actionCommand value="giveChange"/>
           <background color="-11447983"/>
           <font size="14"/>
           <foreground color="-1"/>
           <horizontalTextPosition value="0"/>
           <preferredSize width="175" height="50"/>
-          <text value="Exit"/>
+          <text value="Give Change"/>
           <verticalAlignment value="0"/>
         </properties>
       </component>

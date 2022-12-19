@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import static com.techelevator.VendingMachineCLI.*;
 
@@ -62,5 +63,10 @@ public class VendingMachineController implements VendingMachineEventListener {
     public void exitProgram() {
         pw.close();
         System.exit(0);
+    }
+
+    @Override
+    public Map<Item, Integer> getInventory() {
+        return vendingMachine.getItems();
     }
 }

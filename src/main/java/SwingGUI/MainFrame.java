@@ -73,6 +73,15 @@ public class MainFrame extends JFrame {
                 vendingMachineEventListener.exitProgram();
             }
         });
+        listItemsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Inventory inventoryUI = new Inventory(vendingMachineEventListener);
+                inventoryUI.setContentPane(inventoryUI.getInventoryPanel());
+                inventoryUI.setVisible(true);
+                dispose();
+            }
+        });
     }
 
 

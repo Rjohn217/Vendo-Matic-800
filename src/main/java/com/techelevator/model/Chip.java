@@ -28,4 +28,9 @@ public class Chip implements Item {
     public String getSlot() {
         return slot;
     }
+
+    @Override
+    public String getType() {
+        return "Chip";
+    }
 }

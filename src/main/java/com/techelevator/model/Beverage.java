@@ -26,4 +26,9 @@ public class Beverage implements Item {
     public String getSlot() {
         return slot;
     }
+
+    @Override
+    public String getType() {
+        return "Beverage";
+    }
 }

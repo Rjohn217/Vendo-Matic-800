@@ -21,8 +21,22 @@
           <preferredSize width="500" height="400"/>
         </properties>
         <border type="none"/>
-        <children/>
+        <children>
+          <component id="84721" class="javax.swing.JTable" binding="table1" custom-create="true" default-binding="true">
+            <constraints/>
+            <properties>
+              <font name="DejaVu Sans Mono" size="20" style="1"/>
+              <preferredSize width="500" height="400"/>
+            </properties>
+          </component>
+        </children>
       </grid>
+      <component id="38d73" class="javax.swing.JButton" binding="main">
+        <constraints/>
+        <properties>
+          <text value="Main Menu"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

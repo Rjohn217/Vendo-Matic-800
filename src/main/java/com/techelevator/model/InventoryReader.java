@@ -19,21 +19,22 @@ public class InventoryReader{
    // int money=0;
 
 
-    try{ File inventryReaderFile=new File("vendingmachine.csv");
+    try {
+      File inventryReaderFile=new File("vendingmachine.csv");
       Scanner sc=new Scanner(inventryReaderFile);
       while (sc.hasNext()){
          token=new StringTokenizer(sc.nextLine(),"|");
          location=token.nextToken();
          name=token.nextToken();
-         Money money=new Money();
+         Money money=new Money(Integer.parseInt(token.nextToken().replaceAll("\\.", "")));
          type=token.nextToken();
          //money=Integer.parseInt(token.nextToken());
          //money=(Money)token.nextToken();
           if(type.equals("Gum")){
               Gum newGum=new Gum(name,money,location);
               inventoryReader.add(newGum);
-          }else if(type.equals("CandyUI"))
-          { Candy newCandy= new Candy(name,money,location);
+          }else if(type.equals("Candy")) {
+              Candy newCandy= new Candy(name,money,location);
               inventoryReader.add(newCandy);
           }
           else if (type.equals("Chip")) {
@@ -46,8 +47,7 @@ public class InventoryReader{
 
 
       }
-    }
-    catch (IOException e){
+    } catch (IOException e){
       System.out.println("The inventory can not been read in");
      }
 

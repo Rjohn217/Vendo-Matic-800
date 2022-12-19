@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.util.Objects;
+
 public class Beverage implements Item {
 
     private String name;

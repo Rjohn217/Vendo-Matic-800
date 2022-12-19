@@ -3,6 +3,7 @@ package com.techelevator.controller;
 
 import SwingGUI.MainFrame;
 import com.techelevator.logger.Logger;
+import com.techelevator.logger.SalesReporter;
 import com.techelevator.model.*;
 
 import java.io.IOException;
@@ -61,6 +62,7 @@ public class VendingMachineController implements VendingMachineEventListener {
         if (vendingMachine.getBalance().getAmount() > 0) {
             doGiveChange();
         }
+        SalesReporter.updateSalesReport(vendingMachine.getItems());
         pw.close();
         System.exit(0);
     }

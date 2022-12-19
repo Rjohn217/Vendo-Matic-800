@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.util.Objects;
+
 public class Gum implements Item {
 
     private String name;

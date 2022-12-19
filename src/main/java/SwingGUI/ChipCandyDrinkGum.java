@@ -3,7 +3,6 @@ package SwingGUI;
 import com.techelevator.controller.VendingMachineEventListener;
 import com.techelevator.model.InvalidTransactionException;
 import com.techelevator.model.Item;
-import com.techelevator.model.Transaction;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

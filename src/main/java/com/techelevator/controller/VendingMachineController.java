@@ -34,10 +34,15 @@ public class VendingMachineController implements VendingMachineEventListener {
     }
 
     @Override
-    public String doPurchase(Item item) throws InvalidTransactionException {
-        Transaction purchase = vendingMachine.purchaseItem(item);
-        logger.logMessage(purchase);
-        return item.dispenseMessage();
+    public String doPurchase(Item item) {
+        try {
+            Transaction purchase = vendingMachine.purchaseItem(item);
+            logger.logMessage(purchase);
+            return item.dispenseMessage();
+        } catch (InvalidTransactionException e) {
+            return e.getMessage();
+        }
+
     }
 
     @Override

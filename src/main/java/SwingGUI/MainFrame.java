@@ -43,9 +43,9 @@ public class MainFrame extends JFrame {
         accountBalanceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                AccountBalanceUI accountBalanceUI = new AccountBalanceUI(vendingMachineEventListener);
-                accountBalanceUI.setContentPane(accountBalanceUI.getAccountBalancePanel());
-                accountBalanceUI.setVisible(true);
+                DialogBoxUI dialogBoxUI = new DialogBoxUI(vendingMachineEventListener, vendingMachineEventListener.getBalance());
+                dialogBoxUI.setContentPane(dialogBoxUI.getAccountBalancePanel());
+                dialogBoxUI.setVisible(true);
                 dispose();
             }
         });

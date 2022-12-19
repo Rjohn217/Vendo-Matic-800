@@ -8,25 +8,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class AccountBalanceUI extends JFrame {
+public class DialogBoxUI extends JFrame {
+    private JButton ok;
+    private JLabel dialog;
+    private JPanel dialogPanel;
 
-
-    private JPanel accountBalancePanel;
-    private JPanel balancePanel;
-    private JLabel balanceLabel;
-    private JButton button1;
-
-    private final VendingMachineEventListener vendingMachineEventListener;
-
-    public AccountBalanceUI(VendingMachineEventListener vendingMachineEventListener) {
-        this.vendingMachineEventListener = vendingMachineEventListener;
-        setContentPane(accountBalancePanel);
+    public DialogBoxUI(VendingMachineEventListener vendingMachineEventListener, String message) {
+        setContentPane(dialogPanel);
         setTitle("Vendo-Matic 800: Account Balance");
         setSize(700,700);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        button1.addActionListener(new ActionListener() {
+        ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 MainFrame newMain = new MainFrame(vendingMachineEventListener);
@@ -35,6 +29,8 @@ public class AccountBalanceUI extends JFrame {
                 dispose();
             }
         });
+
+        dialog.setText(message);
 
         addWindowListener(new WindowAdapter()
         {
@@ -49,10 +45,10 @@ public class AccountBalanceUI extends JFrame {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        balanceLabel = new JLabel(vendingMachineEventListener.getBalance());
+        dialog = new JLabel();
     }
 
     public JPanel getAccountBalancePanel() {
-        return accountBalancePanel;
+        return dialogPanel;
     }
 }

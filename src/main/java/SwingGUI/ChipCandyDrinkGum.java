@@ -5,6 +5,7 @@ import com.techelevator.model.InvalidTransactionException;
 import com.techelevator.model.Item;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -66,20 +67,13 @@ public class ChipCandyDrinkGum extends JFrame {
         for (List<Item> rows : itemsByRow.values()) {
             for (Item item : rows) {
                 JButton button = new JButton(item.getName() + " " + item.getCost());
+                button.setPreferredSize(new Dimension(160, 55));
+                button.setFont(new Font("DejaVuMonoSans", 1, 10));
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
-                        try {
-                            DispenseMessage dispenseMessage = new DispenseMessage(vendingMachineEventListener, vendingMachineEventListener.doPurchase(item));
-                            dispenseMessage.setContentPane(dispenseMessage.getDispensePanel());
-                            dispenseMessage.setVisible(true);
-                            dispose();
-                        } catch (InvalidTransactionException e) {
-                            InvalidTransactionUI invalidTransactionUI = new InvalidTransactionUI(vendingMachineEventListener, e);
-                            invalidTransactionUI.setContentPane(invalidTransactionUI.getPanel1());
-                            invalidTransactionUI.setVisible(true);
-                            dispose();
-                        }
+                        DialogBoxUI dialogBoxUI = new DialogBoxUI(vendingMachineEventListener, vendingMachineEventListener.doPurchase(item));
+                        dispose();
                     }
                 });
                 if (item.getSlot().charAt(0) == 'A') {

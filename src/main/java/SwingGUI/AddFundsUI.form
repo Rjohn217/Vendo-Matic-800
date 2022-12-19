@@ -2,17 +2,29 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="SwingGUI.AddFundsUI">
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
     <constraints>
-      <xy x="20" y="20" width="891" height="400"/>
+      <xy x="20" y="20" width="1274" height="400"/>
     </constraints>
     <properties>
       <background color="-9257985"/>
+      <minimumSize width="500" height="69"/>
+      <preferredSize width="500" height="210"/>
     </properties>
     <border type="none"/>
     <children>
+      <component id="a8582" class="javax.swing.JLabel" binding="instructions">
+        <constraints/>
+        <properties>
+          <font name="DejaVu Sans Mono" size="20" style="1"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <preferredSize width="700" height="200"/>
+          <text value="Please input the amount to deposit in dollars:"/>
+        </properties>
+      </component>
       <grid id="8cae" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints/>
         <properties>
-          <minimumSize width="700" height="59"/>
+          <minimumSize width="500" height="59"/>
         </properties>
         <border type="none"/>
         <children>
@@ -21,25 +33,18 @@
             <properties>
               <font name="DejaVu Sans Mono" size="36" style="1"/>
               <minimumSize width="0" height="0"/>
-              <preferredSize width="700" height="49"/>
+              <preferredSize width="500" height="49"/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="87a91" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+      <component id="1b84e" class="javax.swing.JButton" binding="button1" default-binding="true">
         <constraints/>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="1b84e" class="javax.swing.JButton" binding="button1" default-binding="true">
-            <constraints/>
-            <properties>
-              <font name="DejaVu Sans Mono" size="36" style="1"/>
-              <text value="Button"/>
-            </properties>
-          </component>
-        </children>
-      </grid>
+        <properties>
+          <font name="DejaVu Sans Mono" size="36" style="1"/>
+          <text value="Feed Money"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

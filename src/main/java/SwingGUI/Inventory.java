@@ -4,13 +4,17 @@ import com.techelevator.controller.VendingMachineEventListener;
 import com.techelevator.model.Item;
 
 import javax.swing.*;
+import javax.swing.event.TableColumnModelListener;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +48,8 @@ public class Inventory extends JFrame {
             );
         }
 
+        table1.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        table1.doLayout();
 
 
         addWindowListener(new WindowAdapter()
@@ -55,6 +61,7 @@ public class Inventory extends JFrame {
                 vendingMachineEventListener.exitProgram();
             }
         });
+
         main.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -71,6 +78,12 @@ public class Inventory extends JFrame {
     private void createUIComponents() {
         // TODO: place custom component creation code here
         table1 = new JTable(new InventoryModel());
+        table1.getColumnModel().getColumn(0).setPreferredWidth(27);
+        table1.getColumnModel().getColumn(1).setPreferredWidth(1);
+        table1.getColumnModel().getColumn(2).setPreferredWidth(2);
+        table1.getColumnModel().getColumn(3).setPreferredWidth(5);
+        table1.getColumnModel().getColumn(4).setPreferredWidth(5);
+        table1.doLayout();
     }
 
     private class InventoryModel extends AbstractTableModel {

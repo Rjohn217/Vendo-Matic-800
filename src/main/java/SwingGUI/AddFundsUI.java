@@ -12,6 +12,7 @@ public class AddFundsUI extends JFrame {
     private JPanel panel1;
     private JButton button1;
     private JTextPane textPane1;
+    private JLabel instructions;
 
     public AddFundsUI(VendingMachineEventListener vendingMachineEventListener) {
         setContentPane(panel1);

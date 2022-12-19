@@ -2,13 +2,27 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="SwingGUI.DialogBoxUI">
   <grid id="27dc6" binding="dialogPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="870" height="511"/>
     </constraints>
     <properties>
       <background color="-9257985"/>
     </properties>
     <border type="none"/>
     <children>
+      <grid id="f6517" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints/>
+        <properties>
+          <background color="-9257985"/>
+          <minimumSize width="700" height="200"/>
+          <preferredSize width="700" height="200"/>
+        </properties>
+        <border type="none"/>
+        <children/>
+      </grid>
+      <hspacer id="e8481">
+        <constraints/>
+      </hspacer>
       <grid id="967a1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints/>
         <properties>

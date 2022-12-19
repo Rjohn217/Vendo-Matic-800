@@ -20,7 +20,6 @@ public class DispenseMessage extends JFrame {
         setSize(700,700);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JFrame itemsFrame = new JFrame();
         setVisible(true);
 
         addWindowListener(new WindowAdapter()

@@ -53,7 +53,7 @@ public class SalesReporter {
                 printWriter.println(sale.getKey() + "|" + sale.getValue());
             }
             printWriter.println();
-            printWriter.println("**TOTAL SALES** " + total.toString());
+            printWriter.println("**TOTAL SALES** " + total);
         } catch (IOException ignored) {
             //just don't generate the report
         }

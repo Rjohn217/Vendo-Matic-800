@@ -8,22 +8,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
-
 public class AddFundsUI extends JFrame {
     private JPanel panel1;
     private JButton button1;
     private JTextPane textPane1;
-    private VendingMachineEventListener vendingMachineEventListener;
 
     public AddFundsUI(VendingMachineEventListener vendingMachineEventListener) {
-        this.vendingMachineEventListener = vendingMachineEventListener;
         setContentPane(panel1);
         setTitle("Vendo-Matic 800: Add Funds");
         setSize(700, 700);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JFrame itemsFrame = new JFrame();
         setVisible(true);
         button1.addActionListener(new ActionListener() {
             @Override

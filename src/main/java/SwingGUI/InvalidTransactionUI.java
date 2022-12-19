@@ -13,7 +13,6 @@ public class InvalidTransactionUI extends JFrame {
     private JPanel panel1;
     private JLabel invalidTransactionMessage;
     private JButton okButton;
-    private InvalidTransactionException invalidTransactionException;
 
     public InvalidTransactionUI (VendingMachineEventListener vendingMachineEventListener, InvalidTransactionException invalidTransactionException) {
         setContentPane(panel1);
@@ -23,8 +22,6 @@ public class InvalidTransactionUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JFrame itemsFrame = new JFrame();
         setVisible(true);
-
-        this.invalidTransactionException = invalidTransactionException;
 
         addWindowListener(new WindowAdapter()
         {

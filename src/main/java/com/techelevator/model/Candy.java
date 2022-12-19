@@ -1,12 +1,10 @@
 package com.techelevator.model;
 
-import java.util.Objects;
-
 public class Candy implements Item {
-    private String name;
-    private Money cost;
+    private final String name;
+    private final Money cost;
 
-    private String slot;
+    private final String slot;
 
 
     public Candy(String name, Money cost, String slot) {

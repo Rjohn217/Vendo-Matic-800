@@ -1,13 +1,11 @@
 package com.techelevator.model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 
 public class VendingMachine {
 
    private Money balance;
-    private Map<Item, Integer> inventory;
+    private final Map<Item, Integer> inventory;
 
     public Money getBalance() {
         return balance;
@@ -23,8 +21,7 @@ public class VendingMachine {
 
     public Transaction feedMoney(Money amountTOAdd) {
         balance.add(amountTOAdd);
-        Transaction currentTran = new Transaction("FEED MONEY:",amountTOAdd , balance,"");
-        return currentTran;
+        return new Transaction("FEED MONEY:",amountTOAdd , balance,"");
     }
 
     public Transaction purchaseItem(Item item) throws InvalidTransactionException {

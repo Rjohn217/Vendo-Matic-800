@@ -8,8 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
-
 public class AccountBalanceUI extends JFrame {
 
 
@@ -18,7 +16,7 @@ public class AccountBalanceUI extends JFrame {
     private JLabel balanceLabel;
     private JButton button1;
 
-    private VendingMachineEventListener vendingMachineEventListener;
+    private final VendingMachineEventListener vendingMachineEventListener;
 
     public AccountBalanceUI(VendingMachineEventListener vendingMachineEventListener) {
         this.vendingMachineEventListener = vendingMachineEventListener;
@@ -27,7 +25,6 @@ public class AccountBalanceUI extends JFrame {
         setSize(700,700);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JFrame itemsFrame = new JFrame();
         setVisible(true);
         button1.addActionListener(new ActionListener() {
             @Override

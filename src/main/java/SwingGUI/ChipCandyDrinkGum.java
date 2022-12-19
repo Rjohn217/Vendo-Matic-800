@@ -37,7 +37,6 @@ public class ChipCandyDrinkGum extends JFrame {
         setSize(700,700);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JFrame itemsFrame = new JFrame();
         setVisible(true);
 
         this.vendingMachineEventListener = vendingMachineEventListener;

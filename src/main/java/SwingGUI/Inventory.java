@@ -29,7 +29,6 @@ public class Inventory extends JFrame {
         setSize(700,700);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JFrame gumFrame = new JFrame();
         setVisible(true);
 
         this.vendingMachineEventListener = vendingMachineEventListener;

@@ -1,13 +1,11 @@
 package com.techelevator.model;
 
-import java.util.Objects;
-
 public class Chip implements Item {
 
-    private String name;
-    private Money cost;
+    private final String name;
+    private final Money cost;
 
-    private String slot;
+    private final String slot;
 
     public Chip(String name, Money cost, String slot) {
         this.name = name;

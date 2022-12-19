@@ -2,7 +2,6 @@ package com.techelevator.logger;
 
 import com.techelevator.model.Money;
 import com.techelevator.model.Transaction;
-import junit.framework.TestCase;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LoggerTest extends TestCase {
+class LoggerTest {
     @Test
     void logMessageThrowsException() {
         assertThrowsExactly(RuntimeException.class, () -> new Logger(null).logMessage(null, Clock.systemUTC()));

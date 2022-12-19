@@ -2,10 +2,10 @@ package com.techelevator.model;
 
 public class Beverage implements Item {
 
-    private final String name;
-    private final Money cost;
+    private String name;
+    private Money cost;
 
-    private final String slot;
+    private String slot;
 
     public Beverage(String name, Money cost, String slot) {
         this.name = name;
@@ -25,10 +25,5 @@ public class Beverage implements Item {
     @Override
     public String getSlot() {
         return slot;
-    }
-
-    @Override
-    public String getType() {
-        return "Beverage";
     }
 }

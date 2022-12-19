@@ -7,33 +7,31 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InventoryReaderTest {
+public class InventoryReaderTest {
 //inventryReader test
-@Test
-    void gumReader(){
-    InventoryReader gumProduct=new InventoryReader();
-    List<String> gumCalculation=new ArrayList<>();
-    gumCalculation.add("Gum");
-    gumCalculation.add("2.50");
-    gumCalculation.add("Chiclets");
-    assertEquals(gumCalculation,gumProduct.processFile());
-}
-@Test
-    void chipReader(){
-    InventoryReader chipProduct=new InventoryReader();
-    List<String> chipCalculation=new ArrayList<>();
-    chipCalculation.add("Chip");
-    chipCalculation.add("3.25");
-    chipCalculation.add("Grain Waves");
-    assertEquals(chipCalculation,chipProduct.processFile());
-}
-    @Test
-    void drinkReader(){
-        InventoryReader drinkProduct=new InventoryReader();
-        List<String> chipCalculation=new ArrayList<>();
-        chipCalculation.add("Drink");
-        chipCalculation.add("1.85");
-        chipCalculation.add("Grain Waves");
-        assertEquals(chipCalculation,drinkProduct.processFile());
+    public Boolean helperMethodForCompareObject(Item l, Item r ){
+        //Boolean x;
+        if(l.getName().equals(r.getName()) && l.getSlot().equals(r.getSlot())&& l.getCost().getAmount()==r.getCost().getAmount()){
+            return true;
+        }
+        return false;
+
     }
+@Test
+    public void gumReader(){
+    //D3|Chiclets|0.75|Gum
+   // InventoryReader gumProduct=new InventoryReader();
+    Money newMoney=new Money(75);
+    Gum newGum=new Gum("Chiclets",newMoney,"D3");
+    List<Item> gumHandler=InventoryReader.processFile();
+    boolean x=false;
+    for(int i=0;i<gumHandler.size();i++){
+        if(helperMethodForCompareObject(newGum, gumHandler.get(i))){
+            x=true;
+        };
+    }
+
+    assertTrue(x);
+}
+
 }

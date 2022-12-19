@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 
+import javax.xml.namespace.QName;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,6 +52,11 @@ public class InventoryReader{
       System.out.println("The inventory can not been read in");
      }
 
+
     return inventoryReader;
+
   }
+//  public String toString(){
+//      return
+//  }
 }

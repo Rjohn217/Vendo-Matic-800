@@ -2,18 +2,13 @@ package com.techelevator.controller;
 
 
 import SwingGUI.MainFrame;
-import com.techelevator.VendingMachineCLI;
 import com.techelevator.logger.Logger;
 import com.techelevator.model.*;
-import com.techelevator.view.Menu;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
-
-import static com.techelevator.VendingMachineCLI.*;
 
 
 public class VendingMachineController implements VendingMachineEventListener {

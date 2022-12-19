@@ -6,7 +6,7 @@ import com.techelevator.model.Item;
 import java.util.Map;
 
 public interface VendingMachineEventListener {
-    void doPurchase(Item item) throws InvalidTransactionException;
+    String doPurchase(Item item) throws InvalidTransactionException;
     void doFeed(int amount);
     void doGiveChange();
     String getBalance();

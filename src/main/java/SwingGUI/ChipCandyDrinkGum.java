@@ -3,6 +3,7 @@ package SwingGUI;
 import com.techelevator.controller.VendingMachineEventListener;
 import com.techelevator.model.InvalidTransactionException;
 import com.techelevator.model.Item;
+import com.techelevator.model.Transaction;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -32,8 +33,6 @@ public class ChipCandyDrinkGum extends JFrame {
     VendingMachineEventListener vendingMachineEventListener;
 
     ChipCandyDrinkGum(VendingMachineEventListener vendingMachineEventListener) {
-
-
         setContentPane(typePanel);
         setTitle("Vendo-Matic 800");
         setSize(700,700);
@@ -73,10 +72,9 @@ public class ChipCandyDrinkGum extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
                         try {
-                            vendingMachineEventListener.doPurchase(item);
-                            MainFrame newMain = new MainFrame(vendingMachineEventListener);
-                            newMain.setContentPane(newMain.getMainPanel());
-                            newMain.setVisible(true);
+                            DispenseMessage dispenseMessage = new DispenseMessage(vendingMachineEventListener, vendingMachineEventListener.doPurchase(item));
+                            dispenseMessage.setContentPane(dispenseMessage.getDispensePanel());
+                            dispenseMessage.setVisible(true);
                             dispose();
                         } catch (InvalidTransactionException e) {
                             InvalidTransactionUI invalidTransactionUI = new InvalidTransactionUI(vendingMachineEventListener, e);

@@ -33,9 +33,10 @@ public class VendingMachineController implements VendingMachineEventListener {
     }
 
     @Override
-    public void doPurchase(Item item) throws InvalidTransactionException {
+    public String doPurchase(Item item) throws InvalidTransactionException {
         Transaction purchase = vendingMachine.purchaseItem(item);
         logger.logMessage(purchase);
+        return item.dispenseMessage();
     }
 
     @Override
@@ -57,6 +58,9 @@ public class VendingMachineController implements VendingMachineEventListener {
 
     @Override
     public void exitProgram() {
+        if (vendingMachine.getBalance().getAmount() > 0) {
+            doGiveChange();
+        }
         pw.close();
         System.exit(0);
     }

@@ -39,7 +39,11 @@ public class VendingMachine {
             inventory.put(item, inventory.get(item) - 1); // updating the value
             return new Transaction(item.getName() + " " + item.getSlot(), item.getCost(), balance, item.dispenseMessage());
         } else{
-            throw new InvalidTransactionException();
+            if (inventory.get(item) <= 0) {
+                throw new InvalidTransactionException("Item out of stock, please select another");
+            } else {
+                throw new InvalidTransactionException("Balance required to complete this transaction is: " + itemCost + " please insert $" + (itemCost - clientBalance)/100. + " more dollars");
+            }
         }
     }
 

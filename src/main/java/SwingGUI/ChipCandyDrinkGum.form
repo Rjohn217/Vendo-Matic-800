@@ -17,7 +17,6 @@
         <properties>
           <background color="-9257985"/>
           <foreground color="-16777216"/>
-          <preferredSize width="700" height="50"/>
         </properties>
         <border type="none"/>
         <children>
@@ -36,59 +35,31 @@
           </component>
         </children>
       </grid>
-      <grid id="8908d" binding="buttonPanel" layout-manager="FlowLayout" hgap="40" vgap="30" flow-align="1">
+      <grid id="8908d" binding="buttonPanelA" custom-create="true" layout-manager="CardLayout" hgap="0" vgap="0">
         <constraints/>
         <properties>
           <background color="-9257985"/>
-          <maximumSize width="700" height="600"/>
-          <preferredSize width="200" height="350"/>
         </properties>
         <border type="none"/>
-        <children>
-          <component id="804c3" class="javax.swing.JButton" binding="candyButton" default-binding="true">
-            <constraints/>
-            <properties>
-              <background color="-11447983"/>
-              <font size="14"/>
-              <foreground color="-1"/>
-              <horizontalTextPosition value="0"/>
-              <maximumSize width="127" height="30"/>
-              <preferredSize width="175" height="50"/>
-              <text value="Candy"/>
-            </properties>
-          </component>
-          <component id="1db29" class="javax.swing.JButton" binding="chipsButton" default-binding="true">
-            <constraints/>
-            <properties>
-              <background color="-11447983"/>
-              <font size="14"/>
-              <foreground color="-1"/>
-              <preferredSize width="175" height="50"/>
-              <text value="Chips"/>
-            </properties>
-          </component>
-          <component id="30a38" class="javax.swing.JButton" binding="beverageButton" default-binding="true">
-            <constraints/>
-            <properties>
-              <background color="-11447983"/>
-              <font size="14"/>
-              <foreground color="-1"/>
-              <horizontalTextPosition value="0"/>
-              <preferredSize width="175" height="50"/>
-              <text value="Beverage"/>
-            </properties>
-          </component>
-          <component id="d6e2b" class="javax.swing.JButton" binding="gumButton" default-binding="true">
-            <constraints/>
-            <properties>
-              <background color="-11447983"/>
-              <font size="14"/>
-              <foreground color="-1"/>
-              <preferredSize width="175" height="50"/>
-              <text value="Gum"/>
-            </properties>
-          </component>
-        </children>
+        <children/>
+      </grid>
+      <grid id="554e9" binding="buttonPanelB" custom-create="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
+      <grid id="38c11" binding="buttonPanelC" custom-create="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
+      <grid id="e719" binding="buttonPanelD" custom-create="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties/>
+        <border type="none"/>
+        <children/>
       </grid>
     </children>
   </grid>

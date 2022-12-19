@@ -1,15 +1,18 @@
 package SwingGUI;
 
-import com.techelevator.controller.VendingMachineController;
 import com.techelevator.controller.VendingMachineEventListener;
+import com.techelevator.model.InvalidTransactionException;
+import com.techelevator.model.Item;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class ChipCandyDrinkGum extends JFrame {
 
@@ -20,13 +23,13 @@ public class ChipCandyDrinkGum extends JFrame {
 
     private JPanel typePanel;
     private JLabel whatWouldYouLike;
-    private JButton candyButton;
-    private JButton chipsButton;
-    private JButton gumButton;
-    private JButton beverageButton;
     private JPanel titlePanel;
-    private JPanel buttonPanel;
+    private JPanel buttonPanelA;
+    private JPanel buttonPanelB;
+    private JPanel buttonPanelC;
+    private JPanel buttonPanelD;
 
+    VendingMachineEventListener vendingMachineEventListener;
 
     ChipCandyDrinkGum(VendingMachineEventListener vendingMachineEventListener) {
 
@@ -39,63 +42,7 @@ public class ChipCandyDrinkGum extends JFrame {
         JFrame itemsFrame = new JFrame();
         setVisible(true);
 
-
-
-        candyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e != null && e.getActionCommand().equals("Candy")) {
-                    CandyUI candy = new CandyUI(vendingMachineEventListener);
-                    setVisible(true);
-
-
-                    dispose();
-                }
-
-            }
-        } );
-
-        chipsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e != null && e.getActionCommand().equals("Chips")) {
-                    ChipsUI chips = new ChipsUI(vendingMachineEventListener);
-                    setVisible(true);
-
-
-                    dispose();
-                }
-
-            }
-        } );
-
-        beverageButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e != null && e.getActionCommand().equals("Beverage")) {
-                    BeverageUI beverage = new BeverageUI(vendingMachineEventListener);
-                    setVisible(true);
-
-
-                    dispose();
-                }
-
-            }
-        } );
-
-        gumButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e != null && e.getActionCommand().equals("Gum")) {
-                    GumUI gum = new GumUI(vendingMachineEventListener);
-                    setVisible(true);
-
-
-                    dispose();
-                }
-
-            }
-        } );
+        this.vendingMachineEventListener = vendingMachineEventListener;
 
         addWindowListener(new WindowAdapter()
         {
@@ -107,6 +54,57 @@ public class ChipCandyDrinkGum extends JFrame {
             }
         });
 
+        Map<Character, List<Item>> itemsByRow = new TreeMap<>();
+
+        //orders the map
+        for (Item item : vendingMachineEventListener.getInventory().keySet()) {
+            List<Item> currentItems = itemsByRow.get(item.getSlot().charAt(0));
+            if (currentItems == null) {
+                currentItems = new ArrayList<>();
+            }
+            currentItems.add(item);
+            itemsByRow.put(item.getSlot().charAt(0), currentItems);
+        }
+
+        for (List<Item> rows : itemsByRow.values()) {
+            for (Item item : rows) {
+                JButton button = new JButton(item.getName() + " " + item.getCost());
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent actionEvent) {
+                        try {
+                            vendingMachineEventListener.doPurchase(item);
+                            MainFrame newMain = new MainFrame(vendingMachineEventListener);
+                            newMain.setContentPane(newMain.getMainPanel());
+                            newMain.setVisible(true);
+                            dispose();
+                        } catch (InvalidTransactionException e) {
+                            InvalidTransactionUI invalidTransactionUI = new InvalidTransactionUI(vendingMachineEventListener, e);
+                            invalidTransactionUI.setContentPane(invalidTransactionUI.getPanel1());
+                            invalidTransactionUI.setVisible(true);
+                            dispose();
+                        }
+                    }
+                });
+                if (item.getSlot().charAt(0) == 'A') {
+                    buttonPanelA.add(button);
+                } else if (item.getSlot().charAt(0) == 'B') {
+                    buttonPanelB.add(button);
+                } else if (item.getSlot().charAt(0) == 'C') {
+                    buttonPanelC.add(button);
+                } else if (item.getSlot().charAt(0) == 'D') {
+                    buttonPanelD.add(button);
+                }
+            }
+        }
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        buttonPanelA = new JPanel();
+        buttonPanelB = new JPanel();
+        buttonPanelC = new JPanel();
+        buttonPanelD = new JPanel();
     }
 }
 

@@ -18,6 +18,7 @@ public class MainFrame extends JFrame {
     private JButton addFundsButton;
     private JButton listItemsButton;
     private JButton giveChange;
+    private VendingMachineEventListener vendingMachineEventListener;
 
 
     public MainFrame(VendingMachineEventListener vendingMachineEventListener) {
@@ -73,6 +74,7 @@ public class MainFrame extends JFrame {
                 vendingMachineEventListener.exitProgram();
             }
         });
+
         listItemsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

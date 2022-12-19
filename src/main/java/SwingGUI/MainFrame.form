@@ -40,6 +40,14 @@
           </component>
         </children>
       </grid>
+      <component id="b721a" class="javax.swing.JLabel" binding="balanceLabel">
+        <constraints/>
+        <properties>
+          <background color="-9257985"/>
+          <foreground color="-16777216"/>
+          <text value="Label"/>
+        </properties>
+      </component>
       <grid id="8e6e" layout-manager="FlowLayout" hgap="40" vgap="30" flow-align="1">
         <constraints/>
         <properties>
@@ -75,17 +83,6 @@
               <verticalAlignment value="0"/>
             </properties>
           </component>
-          <component id="8db9f" class="javax.swing.JButton" binding="accountBalanceButton" default-binding="true">
-            <constraints/>
-            <properties>
-              <background color="-11447983"/>
-              <font size="14"/>
-              <foreground color="-1"/>
-              <horizontalTextPosition value="0"/>
-              <preferredSize width="175" height="50"/>
-              <text value="Account Balance"/>
-            </properties>
-          </component>
           <component id="658f4" class="javax.swing.JButton" binding="addFundsButton" default-binding="true">
             <constraints/>
             <properties>
@@ -96,21 +93,21 @@
               <text value="Add Funds"/>
             </properties>
           </component>
+          <component id="8ff15" class="javax.swing.JButton" binding="giveChange">
+            <constraints/>
+            <properties>
+              <actionCommand value="giveChange"/>
+              <background color="-11447983"/>
+              <font size="14"/>
+              <foreground color="-1"/>
+              <horizontalTextPosition value="0"/>
+              <preferredSize width="175" height="50"/>
+              <text value="Give Change"/>
+              <verticalAlignment value="0"/>
+            </properties>
+          </component>
         </children>
       </grid>
-      <component id="8ff15" class="javax.swing.JButton" binding="giveChange">
-        <constraints/>
-        <properties>
-          <actionCommand value="giveChange"/>
-          <background color="-11447983"/>
-          <font size="14"/>
-          <foreground color="-1"/>
-          <horizontalTextPosition value="0"/>
-          <preferredSize width="175" height="50"/>
-          <text value="Give Change"/>
-          <verticalAlignment value="0"/>
-        </properties>
-      </component>
     </children>
   </grid>
 </form>

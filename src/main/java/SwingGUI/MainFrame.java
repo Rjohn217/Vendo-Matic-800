@@ -14,10 +14,10 @@ public class MainFrame extends JFrame {
     private JPanel mainPanel;
     private JTextArea welcomeToVendoMatic;
     private JButton purchaseItemsButton;
-    private JButton accountBalanceButton;
     private JButton addFundsButton;
     private JButton listItemsButton;
     private JButton giveChange;
+    private JLabel balanceLabel;
     private VendingMachineEventListener vendingMachineEventListener;
 
 
@@ -37,14 +37,6 @@ public class MainFrame extends JFrame {
             }
         });
 
-
-        accountBalanceButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                DialogBoxUI dialogBoxUI = new DialogBoxUI(vendingMachineEventListener, vendingMachineEventListener.getBalance());
-                dispose();
-            }
-        });
         addFundsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -52,10 +44,12 @@ public class MainFrame extends JFrame {
                 dispose();
             }
         });
+
         giveChange.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                vendingMachineEventListener.doGiveChange();
+                DialogBoxUI dialogBoxUI = new DialogBoxUI(vendingMachineEventListener, vendingMachineEventListener.doGiveChange());
+                dispose();
             }
         });
 
@@ -76,10 +70,17 @@ public class MainFrame extends JFrame {
                 dispose();
             }
         });
+
+        balanceLabel.setText("Balance: " + vendingMachineEventListener.getBalance());
     }
 
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        JLabel balanceLabel = new JLabel();
     }
 }

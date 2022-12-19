@@ -1,7 +1,6 @@
 package SwingGUI;
 
 import com.techelevator.controller.VendingMachineEventListener;
-import com.techelevator.model.InvalidTransactionException;
 import com.techelevator.model.Item;
 
 import javax.swing.*;
@@ -29,6 +28,8 @@ public class ChipCandyDrinkGum extends JFrame {
     private JPanel buttonPanelB;
     private JPanel buttonPanelC;
     private JPanel buttonPanelD;
+    private JButton mainButton;
+    private JLabel balanceLabel;
 
     VendingMachineEventListener vendingMachineEventListener;
 
@@ -67,7 +68,7 @@ public class ChipCandyDrinkGum extends JFrame {
         for (List<Item> rows : itemsByRow.values()) {
             for (Item item : rows) {
                 JButton button = new JButton(item.getName() + " " + item.getCost());
-                button.setPreferredSize(new Dimension(160, 55));
+                button.setPreferredSize(new Dimension(160, 30));
                 button.setFont(new Font("DejaVuMonoSans", 1, 10));
                 button.addActionListener(new ActionListener() {
                     @Override
@@ -87,6 +88,15 @@ public class ChipCandyDrinkGum extends JFrame {
                 }
             }
         }
+        mainButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                MainFrame mainFrame = new MainFrame(vendingMachineEventListener);
+                dispose();
+            }
+        });
+
+        balanceLabel.setText("Balance: " + vendingMachineEventListener.getBalance());
     }
 
     private void createUIComponents() {

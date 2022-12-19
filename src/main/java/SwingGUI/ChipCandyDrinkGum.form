@@ -28,9 +28,16 @@
               <font name="Marlett" size="38" style="3"/>
               <foreground color="-16777216"/>
               <horizontalAlignment value="0"/>
-              <preferredSize width="622" height="44"/>
+              <preferredSize width="522" height="44"/>
               <text value="What would you like?"/>
               <verticalAlignment value="1"/>
+            </properties>
+          </component>
+          <component id="ba9fe" class="javax.swing.JLabel" binding="balanceLabel">
+            <constraints/>
+            <properties>
+              <foreground color="-16777216"/>
+              <text value="Label"/>
             </properties>
           </component>
         </children>
@@ -67,6 +74,13 @@
         <border type="none"/>
         <children/>
       </grid>
+      <component id="cdf45" class="javax.swing.JButton" binding="mainButton">
+        <constraints/>
+        <properties>
+          <hideActionText value="false"/>
+          <text value="Main Menu"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

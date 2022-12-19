@@ -52,9 +52,10 @@ public class VendingMachineController implements VendingMachineEventListener {
     }
 
     @Override
-    public void doGiveChange() {
+    public String doGiveChange() {
         Transaction giveChange = vendingMachine.finishTransaction();
         logger.logMessage(giveChange);
+        return "Change: " + giveChange.getAmount().toString();
     }
 
     @Override

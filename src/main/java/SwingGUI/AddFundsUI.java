@@ -13,6 +13,7 @@ public class AddFundsUI extends JFrame {
     private JButton button1;
     private JTextPane textPane1;
     private JLabel instructions;
+    private JLabel balanceLabel;
 
     public AddFundsUI(VendingMachineEventListener vendingMachineEventListener) {
         setContentPane(panel1);
@@ -25,15 +26,10 @@ public class AddFundsUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 int amountToFeed;
-                while (true) {
-                    try {
+                if (!textPane1.getText().isEmpty()) {
                         amountToFeed = Integer.parseInt(textPane1.getText());
-                        break;
-                    } catch (NumberFormatException ignored) {
-
-                    }
+                        vendingMachineEventListener.doFeed(amountToFeed * 100);
                 }
-                vendingMachineEventListener.doFeed(amountToFeed * 100);
                 MainFrame newMain = new MainFrame(vendingMachineEventListener);
                 dispose();
             }
@@ -48,6 +44,8 @@ public class AddFundsUI extends JFrame {
                 vendingMachineEventListener.exitProgram();
             }
         });
+
+        balanceLabel.setText("Balance: " + vendingMachineEventListener.getBalance());
     }
 
     public JPanel getPanel1() {

@@ -45,11 +45,13 @@ public class InvalidTransactionUI extends JFrame {
                 dispose();
             }
         });
+
+        invalidTransactionMessage.setText(invalidTransactionException.getMessage());
     }
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        invalidTransactionMessage = new JLabel(invalidTransactionException.getMessage());
+        invalidTransactionMessage = new JLabel();
     }
 
     public JPanel getPanel1() {

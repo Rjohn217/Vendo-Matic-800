@@ -1,10 +1,10 @@
 package com.techelevator.model;
 
 public class Candy implements Item {
-    private String name;
-    private Money cost;
+    private final String name;
+    private final Money cost;
 
-    private String slot;
+    private final String slot;
 
 
     public Candy(String name, Money cost, String slot) {
@@ -31,5 +31,10 @@ public class Candy implements Item {
     @Override
     public String getSlot() {
         return slot;
+    }
+
+    @Override
+    public String getType() {
+        return "Candy";
     }
 }

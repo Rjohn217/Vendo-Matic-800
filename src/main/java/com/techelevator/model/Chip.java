@@ -2,10 +2,10 @@ package com.techelevator.model;
 
 public class Chip implements Item {
 
-    private String name;
-    private Money cost;
+    private final String name;
+    private final Money cost;
 
-    private String slot;
+    private final String slot;
 
     public Chip(String name, Money cost, String slot) {
         this.name = name;
@@ -27,5 +27,10 @@ public class Chip implements Item {
     @Override
     public String getSlot() {
         return slot;
+    }
+
+    @Override
+    public String getType() {
+        return "Chip";
     }
 }

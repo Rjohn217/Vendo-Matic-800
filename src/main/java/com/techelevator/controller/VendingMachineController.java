@@ -1,74 +1,74 @@
 package com.techelevator.controller;
 
 
-import com.techelevator.VendingMachineCLI;
+import SwingGUI.MainFrame;
 import com.techelevator.logger.Logger;
+import com.techelevator.logger.SalesReporter;
 import com.techelevator.model.*;
-import com.techelevator.view.Menu;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
-import static com.techelevator.VendingMachineCLI.*;
 
+public class VendingMachineController implements VendingMachineEventListener {
+    private final VendingMachine vendingMachine;
+    PrintWriter pw;
+    private final Logger logger;
 
-public class VendingMachineController {
-    private VendingMachineCLI vendingMachineCLI;
-    private VendingMachine vendingMachine;
-    private Logger logger;
-
-    public VendingMachineController(VendingMachineCLI vendingMachineCLI, VendingMachine vendingMachine, Logger logger) {
-        this.vendingMachineCLI = vendingMachineCLI;
+    public VendingMachineController(VendingMachine vendingMachine, PrintWriter pw) {
         this.vendingMachine = vendingMachine;
-        this.logger = logger;
+        this.pw = pw;
+        logger = new Logger(pw);
     }
 
-    public void run() {
-
-        while (true) {
-            String choice = vendingMachineCLI.getChoice();
-
-            if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-                // display vending machine items
-                for (String itemString : vendingMachine.getItems()) {
-                    System.out.println(itemString);
-                }
-            } else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-                // do purchase
-                String purchaseChoice = vendingMachineCLI.getPurchaseChoice();
-                if (purchaseChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
-                    Money money = new Money(vendingMachineCLI.getFeedAmount() * 100);
-                    Transaction feed = vendingMachine.feedMoney(money);
-                    logger.logMessage(feed);
-                } else if (purchaseChoice.equals(PURCHASE_MENU_OPTION_PURCHASE_ITEM)) {
-                    String purchaseItem = vendingMachineCLI.getPurchaseItem(vendingMachine.getItems());
-                    try {
-                        Transaction purchase = vendingMachine.purchaseItem(new Candy("", new Money(), ""));
-                        logger.logMessage(purchase);
-                    } catch (InvalidTransactionException e) {
-                        throw new RuntimeException();
-                    }
-                } else if (purchaseChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
-                    Transaction finish = vendingMachine.finishTransaction();
-                    logger.logMessage(finish);
-                }
-            } else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
-                break;
-            }
-        }
-    }
 
     public static void main(String[] args) throws IOException {
-        VendingMachineCLI vendingMachineCLI = new VendingMachineCLI();
-        PrintWriter logFile = new PrintWriter(new File("Log.txt"));
-        Logger logger = new Logger(logFile);
+        PrintWriter logFile = new PrintWriter("Log.txt");
         List<Item> inventory = InventoryReader.processFile();
         VendingMachine  vendingMachine = new VendingMachine(inventory);
         VendingMachineController controller =
-                new VendingMachineController(vendingMachineCLI, vendingMachine, logger);
-        controller.run();
-        logFile.close();
+                new VendingMachineController(vendingMachine, logFile);
+        MainFrame myFrame = new MainFrame(controller);
+    }
+
+    @Override
+    public String doPurchase(Item item) throws InvalidTransactionException {
+        Transaction purchase = vendingMachine.purchaseItem(item);
+        logger.logMessage(purchase);
+        return item.dispenseMessage();
+    }
+
+    @Override
+    public void doFeed(int amount) {
+        Transaction feed = vendingMachine.feedMoney(new Money(amount));
+        logger.logMessage(feed);
+    }
+
+    @Override
+    public void doGiveChange() {
+        Transaction giveChange = vendingMachine.finishTransaction();
+        logger.logMessage(giveChange);
+    }
+
+    @Override
+    public String getBalance() {
+        return vendingMachine.getBalance().toString();
+    }
+
+    @Override
+    public void exitProgram() {
+        if (vendingMachine.getBalance().getAmount() > 0) {
+            doGiveChange();
+        }
+        SalesReporter.updateSalesReport(vendingMachine.getItems());
+        pw.close();
+        System.exit(0);
+    }
+
+    @Override
+    public Map<Item, Integer> getInventory() {
+        return vendingMachine.getItems();
     }
 }

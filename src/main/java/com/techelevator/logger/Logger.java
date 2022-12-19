@@ -2,14 +2,13 @@ package com.techelevator.logger;
 
 import com.techelevator.model.Transaction;
 
-import java.io.File;
 import java.io.PrintWriter;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Logger {
-    private PrintWriter log;
+    private final PrintWriter log;
 
     public Logger(PrintWriter log) {
         this.log = log;

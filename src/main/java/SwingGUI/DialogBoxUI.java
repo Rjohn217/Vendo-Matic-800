@@ -15,7 +15,7 @@ public class DialogBoxUI extends JFrame {
 
     public DialogBoxUI(VendingMachineEventListener vendingMachineEventListener, String message) {
         setContentPane(dialogPanel);
-        setTitle("Vendo-Matic 800: Account Balance");
+        setTitle("Vendo-Matic 800");
         setSize(700,700);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,8 +24,6 @@ public class DialogBoxUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 MainFrame newMain = new MainFrame(vendingMachineEventListener);
-                newMain.setContentPane(newMain.getMainPanel());
-                newMain.setVisible(true);
                 dispose();
             }
         });

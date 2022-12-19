@@ -15,7 +15,7 @@ public class AddFundsUI extends JFrame {
 
     public AddFundsUI(VendingMachineEventListener vendingMachineEventListener) {
         setContentPane(panel1);
-        setTitle("Vendo-Matic 800: Add Funds");
+        setTitle("Vendo-Matic 800");
         setSize(700, 700);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,8 +34,6 @@ public class AddFundsUI extends JFrame {
                 }
                 vendingMachineEventListener.doFeed(amountToFeed * 100);
                 MainFrame newMain = new MainFrame(vendingMachineEventListener);
-                newMain.setContentPane(newMain.getMainPanel());
-                newMain.setVisible(true);
                 dispose();
             }
         });

@@ -9,18 +9,40 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="4babd" class="javax.swing.JLabel" binding="dialog" custom-create="true">
+      <grid id="967a1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints/>
         <properties>
-          <text value="Label"/>
+          <background color="-9257985"/>
+          <foreground color="-328193"/>
+          <preferredSize width="500" height="200"/>
         </properties>
-      </component>
-      <component id="d82a9" class="javax.swing.JButton" binding="ok">
+        <border type="none"/>
+        <children>
+          <component id="4babd" class="javax.swing.JLabel" binding="dialog" custom-create="true">
+            <constraints/>
+            <properties>
+              <text value="Label"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="64147" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints/>
         <properties>
-          <text value="Ok"/>
+          <background color="-9257985"/>
+          <preferredSize width="700" height="100"/>
         </properties>
-      </component>
+        <border type="none"/>
+        <children>
+          <component id="d82a9" class="javax.swing.JButton" binding="ok">
+            <constraints/>
+            <properties>
+              <horizontalTextPosition value="0"/>
+              <text value="Ok"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>

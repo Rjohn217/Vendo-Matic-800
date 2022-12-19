@@ -33,8 +33,6 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ChipCandyDrinkGum frame2 = new ChipCandyDrinkGum(vendingMachineEventListener);
-                frame2.setContentPane(frame2.getTypePanel());
-                frame2.setVisible(true);
                 dispose();
             }
         });
@@ -44,8 +42,6 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 DialogBoxUI dialogBoxUI = new DialogBoxUI(vendingMachineEventListener, vendingMachineEventListener.getBalance());
-                dialogBoxUI.setContentPane(dialogBoxUI.getAccountBalancePanel());
-                dialogBoxUI.setVisible(true);
                 dispose();
             }
         });
@@ -53,8 +49,6 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 AddFundsUI addFundsUI = new AddFundsUI(vendingMachineEventListener);
-                addFundsUI.setContentPane(addFundsUI.getPanel1());
-                addFundsUI.setVisible(true);
                 dispose();
             }
         });
@@ -79,8 +73,6 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Inventory inventoryUI = new Inventory(vendingMachineEventListener);
-                inventoryUI.setContentPane(inventoryUI.getInventoryPanel());
-                inventoryUI.setVisible(true);
                 dispose();
             }
         });

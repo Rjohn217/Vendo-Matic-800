@@ -26,7 +26,7 @@ public class Inventory extends JFrame {
 
     public Inventory(VendingMachineEventListener vendingMachineEventListener) {
         setContentPane(inventoryPanel);
-        setTitle("Vendo-Matic 800: List Inventory");
+        setTitle("Vendo-Matic 800");
         setSize(700,700);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,8 +59,6 @@ public class Inventory extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 MainFrame newMain = new MainFrame(vendingMachineEventListener);
-                newMain.setContentPane(newMain.getMainPanel());
-                newMain.setVisible(true);
                 dispose();
             }
         });

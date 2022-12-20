@@ -28,7 +28,12 @@ public class AddFundsUI extends JFrame {
                 int amountToFeed;
                 if (!textPane1.getText().isEmpty()) {
                     amountToFeed = Integer.parseInt(textPane1.getText());
-                    vendingMachineEventListener.doFeed(amountToFeed * 100);
+                    String result = vendingMachineEventListener.doFeed(amountToFeed * 100);
+                    if (result != null) {
+                        DialogBoxUI dialogBoxUI = new DialogBoxUI(vendingMachineEventListener, result);
+                        dispose();
+                        return;
+                    }
                 }
                 MainFrame newMain = new MainFrame(vendingMachineEventListener);
                 dispose();

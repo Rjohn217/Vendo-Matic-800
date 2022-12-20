@@ -46,9 +46,14 @@ public class VendingMachineController implements VendingMachineEventListener {
     }
 
     @Override
-    public void doFeed(int amount) {
-        Transaction feed = vendingMachine.feedMoney(new Money(amount));
-        logger.logMessage(feed);
+    public String doFeed(int amount) {
+        try {
+            Transaction feed = vendingMachine.feedMoney(new Money(amount));
+            logger.logMessage(feed);
+            return null;
+        } catch (InvalidTransactionException e) {
+            return e.getMessage();
+        }
     }
 
     @Override

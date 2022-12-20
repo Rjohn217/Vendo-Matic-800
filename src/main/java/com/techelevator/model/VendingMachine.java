@@ -19,7 +19,10 @@ public class VendingMachine {
         balance = new Money();
     }
 
-    public Transaction feedMoney(Money amountTOAdd) {
+    public Transaction feedMoney(Money amountTOAdd) throws InvalidTransactionException {
+        if (amountTOAdd.getAmount() <= 0) {
+            throw new InvalidTransactionException("Please add a positive amount of money");
+        }
         balance.add(amountTOAdd);
         return new Transaction("FEED MONEY:",amountTOAdd , balance,"");
     }

@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface VendingMachineEventListener {
     String doPurchase(Item item);
-    void doFeed(int amount);
+    String doFeed(int amount);
     String doGiveChange();
     String getBalance();
     void exitProgram();

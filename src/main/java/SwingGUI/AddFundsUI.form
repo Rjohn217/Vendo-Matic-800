@@ -31,7 +31,7 @@
           <component id="5444f" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
             <constraints/>
             <properties>
-              <font name="DejaVu Sans Mono" size="36" style="1"/>
+              <font name="DejaVu Sans Mono" size="20" style="1"/>
               <minimumSize width="0" height="0"/>
               <preferredSize width="500" height="49"/>
             </properties>

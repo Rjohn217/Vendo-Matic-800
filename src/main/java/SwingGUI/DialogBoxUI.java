@@ -45,8 +45,4 @@ public class DialogBoxUI extends JFrame {
         // TODO: place custom component creation code here
         dialog = new JLabel();
     }
-
-    public JPanel getAccountBalancePanel() {
-        return dialogPanel;
-    }
 }

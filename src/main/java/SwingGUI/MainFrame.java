@@ -74,11 +74,6 @@ public class MainFrame extends JFrame {
         balanceLabel.setText("Balance: " + vendingMachineEventListener.getBalance());
     }
 
-
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-
     private void createUIComponents() {
         // TODO: place custom component creation code here
         JLabel balanceLabel = new JLabel();

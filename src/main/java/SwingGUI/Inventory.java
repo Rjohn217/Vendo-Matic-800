@@ -71,10 +71,6 @@ public class Inventory extends JFrame {
         });
     }
 
-    public JPanel getInventoryPanel() {
-        return inventoryPanel;
-    }
-
     private void createUIComponents() {
         // TODO: place custom component creation code here
         table1 = new JTable(new InventoryModel());

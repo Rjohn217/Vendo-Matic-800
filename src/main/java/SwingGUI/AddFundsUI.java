@@ -3,10 +3,7 @@ package SwingGUI;
 import com.techelevator.controller.VendingMachineEventListener;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 public class AddFundsUI extends JFrame {
     private JPanel panel1;
@@ -22,33 +19,20 @@ public class AddFundsUI extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        button1.addActionListener(new ActionListener() {
+
+        balanceLabel.setText("Balance: " + vendingMachineEventListener.getBalance());
+        button1.addMouseListener(new MouseAdapter() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
                 int amountToFeed;
                 if (!textPane1.getText().isEmpty()) {
-                        amountToFeed = Integer.parseInt(textPane1.getText());
-                        vendingMachineEventListener.doFeed(amountToFeed * 100);
+                    amountToFeed = Integer.parseInt(textPane1.getText());
+                    vendingMachineEventListener.doFeed(amountToFeed * 100);
                 }
                 MainFrame newMain = new MainFrame(vendingMachineEventListener);
                 dispose();
             }
         });
-
-        addWindowListener(new WindowAdapter()
-        {
-            @Override
-            public void windowClosing(WindowEvent e)
-            {
-                e.getWindow().dispose();
-                vendingMachineEventListener.exitProgram();
-            }
-        });
-
-        balanceLabel.setText("Balance: " + vendingMachineEventListener.getBalance());
-    }
-
-    public JPanel getPanel1() {
-        return panel1;
     }
 }

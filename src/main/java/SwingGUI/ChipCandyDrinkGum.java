@@ -15,12 +15,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class ChipCandyDrinkGum extends JFrame {
-
-
-    public JPanel getTypePanel() {
-        return typePanel;
-    }
-
     private JPanel typePanel;
     private JLabel whatWouldYouLike;
     private JPanel titlePanel;

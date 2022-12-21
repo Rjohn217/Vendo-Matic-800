@@ -13,7 +13,12 @@ public class VendingMachineTest extends TestCase {
 
         Money moneyToAdd = new Money(5);
 
-        Transaction moneyFeed =  vendingMachine.feedMoney(moneyToAdd);
+        Transaction moneyFeed = null;
+        try {
+            moneyFeed = vendingMachine.feedMoney(moneyToAdd);
+        } catch (InvalidTransactionException e) {
+            throw new RuntimeException(e);
+        }
 
         Assert.assertEquals(moneyFeed.getCommand(),"FEED MONEY:");
 
@@ -47,7 +52,11 @@ public class VendingMachineTest extends TestCase {
         List <Item> myList = new ArrayList<>();
         myList.add(myItem);
         VendingMachine vendingMachine = new VendingMachine(myList);
-        vendingMachine.feedMoney(new Money(1000));
+        try {
+            vendingMachine.feedMoney(new Money(1000));
+        } catch (InvalidTransactionException e) {
+            throw new RuntimeException(e);
+        }
         boolean caughtException = false;
         try{
             vendingMachine.purchaseItem(myItem);
@@ -93,7 +102,11 @@ public class VendingMachineTest extends TestCase {
 
         VendingMachine vendingMachine = new VendingMachine(new ArrayList<>());
 
-        vendingMachine.feedMoney(new Money(2500));
+        try {
+            vendingMachine.feedMoney(new Money(2500));
+        } catch (InvalidTransactionException e) {
+            throw new RuntimeException(e);
+        }
         Transaction myTransaction = vendingMachine.finishTransaction();
        // "GIVE CHANGE:",balance,lastBalance,""
         Assert.assertEquals(myTransaction.getCommand(),"GIVE CHANGE:");

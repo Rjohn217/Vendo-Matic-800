@@ -27,10 +27,16 @@ public class AddFundsUI extends JFrame {
                 super.mouseClicked(e);
                 int amountToFeed;
                 if (!textPane1.getText().isEmpty()) {
-                    amountToFeed = Integer.parseInt(textPane1.getText());
-                    String result = vendingMachineEventListener.doFeed(amountToFeed * 100);
-                    if (result != null) {
-                        DialogBoxUI dialogBoxUI = new DialogBoxUI(vendingMachineEventListener, result);
+                    try {
+                        amountToFeed = Integer.parseInt(textPane1.getText());
+                        String result = vendingMachineEventListener.doFeed(amountToFeed * 100);
+                        if (result != null) {
+                            DialogBoxUI dialogBoxUI = new DialogBoxUI(vendingMachineEventListener, result);
+                            dispose();
+                            return;
+                        }
+                    } catch (NumberFormatException nfe) {
+                        DialogBoxUI dialogBoxUI = new DialogBoxUI(vendingMachineEventListener, "Please Input a valid Number");
                         dispose();
                         return;
                     }
